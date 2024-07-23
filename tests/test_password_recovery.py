@@ -3,9 +3,9 @@ from data import Url
 from pages.password_recovery_page import PasswordRecoveryPage
 from conftest import *
 
-@allure.story('Тесты восстановления пароля')
+@allure.story('Проверки восстановления пароля')
 class TestsPasswordRecovery:
-    @allure.title('Тест перехода на страницу восстановления пароля по кнопке «Восстановить пароль»')
+    @allure.title('Проверка перехода на страницу восстановления пароля по кнопке «Восстановить пароль»')
     def test_transition_to_pass_recovery_page_by_button(self, driver):
         page = PasswordRecoveryPage(driver)
         page.open(Url.LOGIN_PAGE)
@@ -13,7 +13,7 @@ class TestsPasswordRecovery:
         assert (page.get_url() == Url.FORGOT_PASSWORD_PAGE and
                 page.get_text_from_recovery_button()) == 'Восстановить'
 
-    @allure.title('Тест клика по кнопке "Восстановить" с введеной существующей почтой')
+    @allure.title('Проверка клика по кнопке "Восстановить" с введеной существующей почтой')
     def test_enter_email_click_recovery(self, driver, user):
         page = PasswordRecoveryPage(driver)
         page.open(Url.FORGOT_PASSWORD_PAGE)
@@ -23,7 +23,7 @@ class TestsPasswordRecovery:
         assert (page.get_url() == Url.RESET_PASSWORD_PAGE and
                 page.get_text_password_recovery() == 'Восстановление пароля')
 
-    @allure.title('Тест кнопки показать/скрыть пароль')
+    @allure.title('Проверка кнопки показать/скрыть пароль')
     def test_show_hide_password_button(self, driver, user):
         page = PasswordRecoveryPage(driver)
         page.open(Url.FORGOT_PASSWORD_PAGE)
